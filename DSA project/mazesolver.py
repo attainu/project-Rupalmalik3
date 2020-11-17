@@ -1,14 +1,14 @@
 from collections import deque
 class Solution:
+      
   def Maze(self,matrix):
-    #making a solution-matrix whose size is equal to the given matrix
+#making a solution-matrix whose size is equal to the given matrix
     m=len(matrix[0])
     n=len(matrix)
-    solution=[[0] * m for _ in range(n)] 
+    solution=[[0] * m for _ in range(n)]
+#using deque module to create a queue and appending(0,0)
     q=deque() 
-    r=deque()
     q.append((0, 0))
-    r.append((0, 0))
     #initializing count  
     count=0
     while (len(q) > 0):     
@@ -23,7 +23,7 @@ class Solution:
 #if the path is 1 on given matrix then marking them on solution matrix
         if p[0]>=0 and p[1]>=0 and p[0]<n and p[1]<m and solution[p[0]][p[1]]==0 and matrix[p[0]][p[1]]==1:
           solution[p[0]][p[1]]=1
-          r.append(p)
+          
           #finding the next path
           #right
           if (p[0] + 1 < n and
@@ -34,15 +34,15 @@ class Solution:
           if (p[1] + 1 < m and 
               matrix[p[0]][p[1]+1] == 1): 
               q.append((p[0], p[1] + 1))
-    #for count value zero it prints -1 i.e. there are no solutions. 
+#for count value zero it prints -1 i.e. there are no solutions. 
     if count==0:
       print(-1)         
   
-  #for printing the Solution matrix
+#for printing the Solution matrix
   def PrintSolution(self,solution):
     for i in solution:
       print(i)  
-#******************************************************
+#*******************************************************************
 sol=Solution()
 
 import fileinput
